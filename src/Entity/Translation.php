@@ -14,52 +14,24 @@ class Translation
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $cle = null;
+    private ?string $key = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $local = null;
+    #[ORM\Column(length: 10)]
+    private ?string $locale = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $translation = null;
+    #[ORM\Column(type: 'text')]
+    private ?string $message = null;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    // Getters et Setters
+    public function getId(): ?int { return $this->id; }
 
-    public function getCle(): ?string
-    {
-        return $this->cle;
-    }
+    public function getKey(): ?string { return $this->key; }
+    public function setKey(string $key): self { $this->key = $key; return $this; }
 
-    public function setCle(string $cle): static
-    {
-        $this->cle = $cle;
+    public function getLocale(): ?string { return $this->locale; }
+    public function setLocale(string $locale): self { $this->locale = $locale; return $this; }
 
-        return $this;
-    }
+    public function getMessage(): ?string { return $this->message; }
+    public function setMessage(string $message): self { $this->message = $message; return $this; }
 
-    public function getLocal(): ?string
-    {
-        return $this->local;
-    }
-
-    public function setLocal(string $local): static
-    {
-        $this->local = $local;
-
-        return $this;
-    }
-
-    public function getTranslation(): ?string
-    {
-        return $this->translation;
-    }
-
-    public function setTranslation(string $translation): static
-    {
-        $this->translation = $translation;
-
-        return $this;
-    }
 }
