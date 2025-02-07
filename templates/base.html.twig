@@ -1,17 +1,43 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
-
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+    <title></title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="XXXXXXXXXXXXXx" />
+	<meta name="format-detection" content="telephone=no">
+	<link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon" />
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/plugins.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/templete.css') }}">
+	<link class="skin" rel="stylesheet" type="text/css" href="{{ asset('css/skin/skin-1.css') }}">   
     </head>
     <body>
+
+        {{ render(controller('App\\Controller\\partials\\MenuController::menu')) }}
+
         {% block body %}{% endblock %}
     </body>
+    <script src="{{ asset('js/jquery.min.js') }}"></script><!-- JQUERY.MIN JS -->
+    <script src="{{ asset('plugins/wow/wow.js') }}"></script><!-- WOW JS -->
+    <script src="{{ asset('plugins/bootstrap/js/popper.min.js') }}"></script><!-- BOOTSTRAP.MIN JS -->
+    <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js') }}"></script><!-- BOOTSTRAP.MIN JS -->
+    <script src="{{ asset('plugins/bootstrap-select/bootstrap-select.min.js') }}"></script><!-- FORM JS -->
+    <script src="{{ asset('plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js') }}"></script><!-- FORM JS -->
+    <script src="{{ asset('plugins/lightgallery/js/lightgallery-all.min.js') }}"></script><!-- LIGHTGALLERY JS -->
+    <script src="{{ asset('plugins/magnific-popup/magnific-popup.js') }}"></script><!-- LIGHTGALLERY JS -->
+    <script src="{{ asset('plugins/counter/waypoints-min.js') }}"></script><!-- WAYPOINTS JS -->
+    <script src="{{ asset('plugins/counter/counterup.min.js') }}"></script><!-- COUNTERUP JS -->
+    <script src="{{ asset('plugins/imagesloaded/imagesloaded.js') }}"></script><!-- IMAGESLOADED -->
+    <script src="{{ asset('plugins/masonry/masonry-3.1.4.js') }}"></script><!-- MASONRY -->
+    <script src="{{ asset('plugins/masonry/masonry.filter.js') }}"></script><!-- MASONRY -->
+    <script src="{{ asset('plugins/owl-carousel/owl.carousel.js') }}"></script><!-- OWL SLIDER -->
+    <script src="{{ asset('plugins/scroll/scrollbar.min.js') }}"></script><!-- OWL SLIDER -->
+    <script src="{{ asset('js/custom.js') }}"></script><!-- CUSTOM FUCTIONS  -->
+    <script src="{{ asset('js/dz.carousel.js') }}"></script><!-- SORTCODE FUCTIONS -->
+    <script src="{{ asset('js/dz.ajax.js') }}"></script><!-- CONTACT JS  -->
+    <script src="{{ asset('plugins/loading/anime.js') }}"></script><!-- LOADING JS -->
+    <script src="{{ asset('plugins/loading/anime-app.js') }}"></script><!-- LOADING JS -->
 </html>
