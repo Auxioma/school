@@ -14,11 +14,15 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/templete.css') }}">
 	<link class="skin" rel="stylesheet" type="text/css" href="{{ asset('css/skin/skin-1.css') }}">   
     </head>
-    <body>
-<p>{{ 'welcome'|trans }}</p>
-        {{ render(controller('App\\Controller\\partials\\MenuController::menu')) }}
+    <body id="bg">
+        <div class="page-wraper">
+            <div id="loading-area" class="loading-1"><h1 class="loader1">Loading</h1></div>
+            {{ render(controller('App\\Controller\\partials\\MenuController::menu')) }}
+            {% block body %}{% endblock %}
 
-        {% block body %}{% endblock %}
+            {% include 'partials/footer.html.twig' %}
+            <button class="scroltop fa fa-chevron-up" ></button>
+        </div>
     </body>
     <script src="{{ asset('js/jquery.min.js') }}"></script><!-- JQUERY.MIN JS -->
     <script src="{{ asset('plugins/wow/wow.js') }}"></script><!-- WOW JS -->

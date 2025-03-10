@@ -21,4 +21,13 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
 
+    App\Service\DatabaseTranslator:
+        decorates: 'translator'
+        arguments: ['@.inner', '@App\Repository\TranslationRepository']
+
+    App\EventSubscriber\TranslationSubscriber:
+        tags:
+            - { name: kernel.event_subscriber }

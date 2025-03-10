@@ -3,5 +3,429 @@
 {% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-body
+    <div class="page-content bg-white">
+        <div class="owl-slider owl-carousel owl-theme owl-btn-center-lr dots-none">
+		{% for slide in sliders %}
+			<div class="item slide-item">
+				<div class="slide-item-img"><img src="{{ asset('images/main-slider/' ~ slide.picture) }}" class="" alt=""/></div>
+				<div class="slide-content">
+					<div class="slide-content-box container">
+						<div class="slide-content-area">
+							{% set words = slide.titre|split(' ') %}
+							{% set last_word = words|last %}
+							{% set first_part = words|slice(0, words|length - 1)|join(' ') %}
+
+							<h2 class="slider-title">{{ first_part }} <span>{{ last_word }}</span></h2>
+
+							<p>{{ slide.description }}</p>
+							<a href="contect-us.html" class="btn btn-md kids-btn radius-xl">Join us</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		<div class="content-block">
+            <div class="section-full bg-white content-inner-1 text-center">
+                <div class="container">
+					<div class="section-head">
+						<h2 class="head-title text-secondry">{{ 'welcome'|trans }}</h2>
+						<p>{{ 'welcome1'|trans }}</p>
+					</div>
+					<div class="row">
+						{% for com in comercials%}
+						<div class="col-lg-3 col-md-6 col-sm-6 col-12 wow fadeIn" data-wow-delay="0.2s"  data-wow-duration="2s">
+							<div class="icon-bx-wraper sr-iconbox m-b20">
+								<div class="icon-lg m-b20">
+									<a href="javascript:void(0);" class="icon-cell"><img src="{{ asset('images/icon/' ~ com.pictures) }}" alt=""/></a>
+								</div>
+								<div class="icon-content">
+									<h6 class="dlab-tilte">{{ com.name }}</h6>
+								</div>
+							</div>
+						</div>
+						{% endfor %}	
+					</div>
+				</div>
+            </div>
+			<div class="section-full bg-white content-inner-2 about-box" style="background-image:url(images/line.png); background-size:contain;background-repeat: no-repeat;background-position: center;">
+                <div class="container">
+					<div class="row">
+						<div class="col-lg-7 col-md-12 col-sm-12 col-12 wow fadeIn" data-wow-delay="0.2s"  data-wow-duration="2s">
+							<div class="section-head">
+								<h2 class="head-title text-secondry">
+									{% set texte = 'inteligent'|trans %}
+									{% set mots = texte|split(" ") %}
+									{% set result = "" %}
+									{% for mot in mots %}
+										{% set result = result ~ mot ~ " " %}
+										{% if loop.index % 3 == 0 %}
+											{% set result = result ~ "<br>" %}
+										{% endif %}
+									{% endfor %}
+									{{ result|raw }}
+								</h2>
+								<p>{{ 'inteligent-p'|trans }}</p>
+								<a href="faqs.html" class="btn btn-md kids-btn radius-xl">Learn more</a>
+							</div>
+						</div>
+						<div class="col-lg-5 col-md-12 col-sm-12 col-12">
+							<div class="icon-bx-wraper left">
+								<div class="icon-lg m-b20"> <span class="icon-cell text-blue"><i class="flaticon-rattle"></i></span> </div>
+								<div class="icon-content">
+									<h2 class="dlab-tilte">{{ 'ecole'|trans }}</h2>
+									<p>{{ 'ecole1'|trans }}</p>
+								</div>
+							</div>
+							<div class="icon-bx-wraper left">
+								<div class="icon-lg m-b20"> <span class="icon-cell text-green"><i class="flaticon-bricks"></i></span> </div>
+								<div class="icon-content">
+									<h2 class="dlab-tilte">{{ 'cours'|trans }}</h2>
+									<p>{{ 'cours1'|trans }}</p>
+								</div>
+							</div>
+							<div class="icon-bx-wraper left">
+								<div class="icon-lg m-b20"> <span class="icon-cell text-orange"><i class="flaticon-puzzle"></i></span> </div>
+								<div class="icon-content">
+									<h2 class="dlab-tilte">{{ 'boutique'|trans }}</h2>
+									<p>{{ 'boutique1'|trans }}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+			{% for item in paralaxs %}
+			<div class="section-full bg-white content-inner-2 about-content bg-img-fix" style="background-image:url({{ asset('images/background/' ~ item.image) }});">
+				<div class="about-overlay-box"></div>
+                <div class="container">
+					<div class="row">
+						<div class="col-lg-6 col-md-12 col-sm-12 col-12 wow fadeIn" data-wow-delay="0.2s"  data-wow-duration="2s">
+							<div class="section-head">
+								
+								<h2 class="head-title text-yellow">{{ item.titre}}</h2>
+								<p class="text-white">{{ item.description}}</p>
+								
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-12 col-12"></div>
+					</div>
+				</div>
+            </div>
+			{% endfor %}
+			<div class="section-full bg-white content-inner-1">
+                <div class="container">
+					<div class="section-head text-center">
+						<h2 class="head-title text-secondry">Gallery of our classes</h2>
+						<p>We provide three classes with nine to twenty children each aged twelve months to six years of age.</p>
+					</div>
+					<div class="gallery-carousel owl-carousel owl-theme dots-none sprite-nav" id="lightgallery">
+						<div class="item">
+							 <div class="dlab-box frame-box">
+								<div class="dlab-thum dlab-img-overlay1"> 
+									<a href="javascript:void(0);">
+										<img src="images/gallery/pic1.jpg" alt="">
+									</a>
+									<div class="overlay-bx">
+										<div class="overlay-icon"> 
+											<span data-exthumbimage="images/gallery/pic1.jpg" data-src="images/gallery/pic1.jpg" class="check-km" title="Title Come Here">
+												<i class="fa fa-search icon-bx-xs"></i>
+											</span> 
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							 <div class="dlab-box frame-box">
+								<div class="dlab-thum dlab-img-overlay1"> 
+									<a href="javascript:void(0);">
+										<img src="images/gallery/pic2.jpg" alt="">
+									</a>
+									<div class="overlay-bx">
+										<div class="overlay-icon"> 
+											<span data-exthumbimage="images/gallery/pic2.jpg" data-src="images/gallery/pic2.jpg" class="check-km" title="Title Come Here">
+												<i class="fa fa-search icon-bx-xs"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							 <div class="dlab-box frame-box">
+								<div class="dlab-thum dlab-img-overlay1"> 
+									<a href="javascript:void(0);">
+										<img src="images/gallery/pic3.jpg" alt="">
+									</a>
+									<div class="overlay-bx">
+										<div class="overlay-icon"> 
+											<span data-exthumbimage="images/gallery/pic3.jpg" data-src="images/gallery/pic3.jpg" class="check-km" title="Title Come Here">
+												<i class="fa fa-search icon-bx-xs"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							 <div class="dlab-box frame-box">
+								<div class="dlab-thum dlab-img-overlay1"> 
+									<a href="javascript:void(0);">
+										<img src="images/gallery/pic4.jpg" alt="">
+									</a>
+									<div class="overlay-bx">
+										<div class="overlay-icon"> 
+											<span data-exthumbimage="images/gallery/pic4.jpg" data-src="images/gallery/pic4.jpg" class="check-km" title="Title Come Here">
+												<i class="fa fa-search icon-bx-xs"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							 <div class="dlab-box frame-box">
+								<div class="dlab-thum dlab-img-overlay1"> 
+									<a href="javascript:void(0);">
+										<img src="images/gallery/pic5.jpg" alt="">
+									</a>
+									<div class="overlay-bx">
+										<div class="overlay-icon"> 
+											<span data-exthumbimage="images/gallery/pic5.jpg" data-src="images/gallery/pic5.jpg" class="check-km" title="Title Come Here">
+												<i class="fa fa-search icon-bx-xs"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							 <div class="dlab-box frame-box">
+								<div class="dlab-thum dlab-img-overlay1"> 
+									<a href="javascript:void(0);">
+										<img src="images/gallery/pic6.jpg" alt="">
+									</a>
+									<div class="overlay-bx">
+										<div class="overlay-icon"> 
+											<span data-exthumbimage="images/gallery/pic6.jpg" data-src="images/gallery/pic6.jpg" class="check-km" title="Title Come Here">
+												<i class="fa fa-search icon-bx-xs"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+			<div class="section-full bg-white content-inner-1" style="background-image:url(images/line2.png); background-size:contain;background-repeat: no-repeat;background-position: center;">
+                <div class="container">
+					<div class="section-head text-center">
+						<h2 class="head-title text-secondry">About the Teachers</h2>
+						<p>We have an excellent teacher to child ratio at our Kindergarten to ensure that each child receives the attention he or she needs</p>
+					</div>
+					<div class="team-carousel owl-carousel owl-theme dots-none sprite-nav">
+						<div class="item">
+							 <div class="dlab-box box-frame1 team-box">
+								<div class="dlab-thum"> 
+									<a href="teachers-details.html">
+										<img src="images/team/pic1.jpg" alt="">
+									</a>
+									<div class="overlay-bx">
+										<h5 class="team-title"><a href="teachers-details.html">Jone Doe</a></h5>
+										<span class="team-info">Teachers</span>
+										<ul class="list-inline">
+											<li><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
+											<li><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
+											<li><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
+											<li><a href="javascript:void(0);"><i class="fa fa-instagram"></i></a></li>
+											<li><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							 <div class="dlab-box box-frame2 team-box">
+								<div class="dlab-thum"> 
+									<a href="teachers-details.html">
+										<img src="images/team/pic2.jpg" alt="">
+									</a>
+									<div class="overlay-bx">
+										<h5 class="team-title"><a href="teachers-details.html">Jone Doe</a></h5>
+										<span class="team-info">Teachers</span>
+										<ul class="list-inline">
+											<li><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
+											<li><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
+											<li><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
+											<li><a href="javascript:void(0);"><i class="fa fa-instagram"></i></a></li>
+											<li><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							 <div class="dlab-box box-frame3 team-box">
+								<div class="dlab-thum"> 
+									<a href="teachers-details.html">
+										<img src="images/team/pic3.jpg" alt="">
+									</a>
+									<div class="overlay-bx">
+										<h5 class="team-title"><a href="teachers-details.html">Jone Doe</a></h5>
+										<span class="team-info">Teachers</span>
+										<ul class="list-inline">
+											<li><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
+											<li><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
+											<li><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
+											<li><a href="javascript:void(0);"><i class="fa fa-instagram"></i></a></li>
+											<li><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							 <div class="dlab-box box-frame4 team-box">
+								<div class="dlab-thum"> 
+									<a href="teachers-details.html">
+										<img src="images/team/pic4.jpg" alt="">
+									</a>
+									<div class="overlay-bx">
+										<h5 class="team-title"><a href="teachers-details.html">Jone Doe</a></h5>
+										<span class="team-info">Teachers</span>
+										<ul class="list-inline">
+											<li><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
+											<li><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
+											<li><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
+											<li><a href="javascript:void(0);"><i class="fa fa-instagram"></i></a></li>
+											<li><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+			<div class="section-full bg-white content-inner-1">
+                <div class="container">
+					<div class="section-head text-center">
+						<h2 class="head-title text-secondry">Testimonials about center</h2>
+						<p>We have an excellent teacher to child ratio at our Kindergarten to ensure that each child receives the attention he or she needs</p>
+					</div>
+					<div class="client-carousel owl-carousel owl-theme sprite-nav">
+						<div class="item">
+							<div class="client-box">
+								<div class="testimonial-detail clearfix">
+									<div class="testimonial-pic radius">
+										<img src="images/testimonials/pic2.jpg" width="100" height="100" alt="">
+									</div>
+									<h5 class="testimonial-name m-t0 m-b5">Mr. Jone Deo</h5> 
+									<span>Client</span> 
+								</div>
+								<div class="testimonial-text">
+									<p>My younger son returns very happy with all activities happening at your school every day. I am glad that my son is being taught in your school. You have the motst qualified teachers in the area! My daughter is very satisfied with lessons of English and Math – they give her additional impact for development. Thank you!</p>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="client-box">
+								<div class="testimonial-detail clearfix">
+									<div class="testimonial-pic radius">
+										<img src="images/testimonials/pic2.jpg" width="100" height="100" alt="">
+									</div>
+									<h5 class="testimonial-name m-t0 m-b5">Mr. Jone Deo</h5> 
+									<span>Client</span> 
+								</div>
+								<div class="testimonial-text">
+									<p>My younger son returns very happy with all activities happening at your school every day. I am glad that my son is being taught in your school. You have the motst qualified teachers in the area! My daughter is very satisfied with lessons of English and Math – they give her additional impact for development. Thank you!</p>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="client-box">
+								<div class="testimonial-detail clearfix">
+									<div class="testimonial-pic radius">
+										<img src="images/testimonials/pic2.jpg" width="100" height="100" alt="">
+									</div>
+									<h5 class="testimonial-name m-t0 m-b5">Mr. Jone Deo</h5> 
+									<span>Client</span> 
+								</div>
+								<div class="testimonial-text">
+									<p>My younger son returns very happy with all activities happening at your school every day. I am glad that my son is being taught in your school. You have the motst qualified teachers in the area! My daughter is very satisfied with lessons of English and Math – they give her additional impact for development. Thank you!</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+			<div class="section-full bg-white content-inner">
+				<div class="container">
+					<div class="section-head text-center">
+						<h2 class="head-title text-secondry">From the Blog</h2>
+						<p>We have an excellent teacher to child ratio at our Kindergarten to ensure that each child receives the attention he or she needs</p>
+					</div>
+					<div class="blog-carousel owl-carousel owl-theme dots-none sprite-nav owl-btn-center-lr">
+						<div class="item">
+							<div class="blog-post blog-grid ">
+                                <div class="dlab-post-media frame-box">
+									<a href="blog-details.html"><img src="images/blog/grid/pic1.jpg" alt=""></a>
+								</div>
+                                <div class="dlab-info">
+                                    <div class="dlab-post-title">
+                                        <h4 class="post-title"><a href="blog-details.html">The Biggest Contribution Of Education Blog To Humanity.</a></h4>
+                                    </div>
+                                    <div class="dlab-post-text">
+                                       <p>Separation Tips You and your child are about to have an amazing and fun...</p>
+                                    </div>
+									<div class="dlab-post-readmore"> 
+										<a href="blog-details.html" title="READ MORE" rel="bookmark" class="btn-link">Read More</a>
+									</div>
+                                </div>
+                            </div>
+						</div>
+						<div class="item">
+							<div class="blog-post blog-grid ">
+                                <div class="dlab-post-media frame-box">
+									<a href="blog-details.html"><img src="images/blog/grid/pic2.jpg" alt=""></a>
+								</div>
+                                <div class="dlab-info">
+                                    <div class="dlab-post-title">
+                                        <h4 class="post-title"><a href="blog-details.html">The Truth About Education Blog Is About To Be Revealed.</a></h4>
+                                    </div>
+                                    <div class="dlab-post-text">
+                                       <p>Separation Tips You and your child are about to have an amazing and fun...</p>
+                                    </div>
+									<div class="dlab-post-readmore"> 
+										<a href="blog-details.html" title="READ MORE" rel="bookmark" class="btn-link">Read More</a>
+									</div>
+                                </div>
+                            </div>
+						</div>
+						<div class="item">
+							<div class="blog-post blog-grid ">
+                                <div class="dlab-post-media frame-box">
+									<a href="blog-details.html"><img src="images/blog/grid/pic3.jpg" alt=""></a>
+								</div>
+                                <div class="dlab-info">
+                                    <div class="dlab-post-title">
+                                        <h4 class="post-title"><a href="blog-details.html">Five Reasons Why People Like Education Blog.</a></h4>
+                                    </div>
+                                    <div class="dlab-post-text">
+                                       <p>Separation Tips You and your child are about to have an amazing and fun...</p>
+                                    </div>
+									<div class="dlab-post-readmore"> 
+										<a href="blog-details.html" title="READ MORE" rel="bookmark" class="btn-link">Read More</a>
+									</div>
+                                </div>
+                            </div>
+						</div>
+					</div>
+				</div>
+            </div>
+		</div>
+    </div>
+	<!-- Content END-->
 {% endblock %}
