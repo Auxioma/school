@@ -113,199 +113,35 @@
 				</div>
             </div>
 			{% endfor %}
-			<div class="section-full bg-white content-inner-1">
-                <div class="container">
-					<div class="section-head text-center">
-						<h2 class="head-title text-secondry">Gallery of our classes</h2>
-						<p>We provide three classes with nine to twenty children each aged twelve months to six years of age.</p>
-					</div>
-					<div class="gallery-carousel owl-carousel owl-theme dots-none sprite-nav" id="lightgallery">
-						<div class="item">
-							 <div class="dlab-box frame-box">
-								<div class="dlab-thum dlab-img-overlay1"> 
-									<a href="javascript:void(0);">
-										<img src="images/gallery/pic1.jpg" alt="">
-									</a>
-									<div class="overlay-bx">
-										<div class="overlay-icon"> 
-											<span data-exthumbimage="images/gallery/pic1.jpg" data-src="images/gallery/pic1.jpg" class="check-km" title="Title Come Here">
-												<i class="fa fa-search icon-bx-xs"></i>
-											</span> 
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							 <div class="dlab-box frame-box">
-								<div class="dlab-thum dlab-img-overlay1"> 
-									<a href="javascript:void(0);">
-										<img src="images/gallery/pic2.jpg" alt="">
-									</a>
-									<div class="overlay-bx">
-										<div class="overlay-icon"> 
-											<span data-exthumbimage="images/gallery/pic2.jpg" data-src="images/gallery/pic2.jpg" class="check-km" title="Title Come Here">
-												<i class="fa fa-search icon-bx-xs"></i>
-											</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							 <div class="dlab-box frame-box">
-								<div class="dlab-thum dlab-img-overlay1"> 
-									<a href="javascript:void(0);">
-										<img src="images/gallery/pic3.jpg" alt="">
-									</a>
-									<div class="overlay-bx">
-										<div class="overlay-icon"> 
-											<span data-exthumbimage="images/gallery/pic3.jpg" data-src="images/gallery/pic3.jpg" class="check-km" title="Title Come Here">
-												<i class="fa fa-search icon-bx-xs"></i>
-											</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							 <div class="dlab-box frame-box">
-								<div class="dlab-thum dlab-img-overlay1"> 
-									<a href="javascript:void(0);">
-										<img src="images/gallery/pic4.jpg" alt="">
-									</a>
-									<div class="overlay-bx">
-										<div class="overlay-icon"> 
-											<span data-exthumbimage="images/gallery/pic4.jpg" data-src="images/gallery/pic4.jpg" class="check-km" title="Title Come Here">
-												<i class="fa fa-search icon-bx-xs"></i>
-											</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							 <div class="dlab-box frame-box">
-								<div class="dlab-thum dlab-img-overlay1"> 
-									<a href="javascript:void(0);">
-										<img src="images/gallery/pic5.jpg" alt="">
-									</a>
-									<div class="overlay-bx">
-										<div class="overlay-icon"> 
-											<span data-exthumbimage="images/gallery/pic5.jpg" data-src="images/gallery/pic5.jpg" class="check-km" title="Title Come Here">
-												<i class="fa fa-search icon-bx-xs"></i>
-											</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							 <div class="dlab-box frame-box">
-								<div class="dlab-thum dlab-img-overlay1"> 
-									<a href="javascript:void(0);">
-										<img src="images/gallery/pic6.jpg" alt="">
-									</a>
-									<div class="overlay-bx">
-										<div class="overlay-icon"> 
-											<span data-exthumbimage="images/gallery/pic6.jpg" data-src="images/gallery/pic6.jpg" class="check-km" title="Title Come Here">
-												<i class="fa fa-search icon-bx-xs"></i>
-											</span>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-            </div>
 			<div class="section-full bg-white content-inner-1" style="background-image:url(images/line2.png); background-size:contain;background-repeat: no-repeat;background-position: center;">
                 <div class="container">
 					<div class="section-head text-center">
-						<h2 class="head-title text-secondry">About the Teachers</h2>
-						<p>We have an excellent teacher to child ratio at our Kindergarten to ensure that each child receives the attention he or she needs</p>
+						<h2 class="head-title text-secondry"><p>{{ 'about_the_teachers'|trans }}</p></h2>
+						<p>{{ 'about_the_teachers_paragraf'|trans }}</p>
 					</div>
 					<div class="team-carousel owl-carousel owl-theme dots-none sprite-nav">
-						<div class="item">
-							 <div class="dlab-box box-frame1 team-box">
-								<div class="dlab-thum"> 
-									<a href="teachers-details.html">
-										<img src="images/team/pic1.jpg" alt="">
-									</a>
-									<div class="overlay-bx">
-										<h5 class="team-title"><a href="teachers-details.html">Jone Doe</a></h5>
-										<span class="team-info">Teachers</span>
-										<ul class="list-inline">
-											<li><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
-											<li><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-											<li><a href="javascript:void(0);"><i class="fa fa-instagram"></i></a></li>
-											<li><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-										</ul>
+						{% for teachers in teachers %}
+							<div class="item">
+								<div class="dlab-box box-frame1 team-box">
+									<div class="dlab-thum"> 
+										<a href="teachers-details.html">
+											<img src="{{ asset('images/team/' ~ teachers.pictures) }}" alt="">
+										</a>
+										<div class="overlay-bx">
+											<h5 class="team-title"><a href="teachers-details.html">{{ teachers.name }}</a></h5>
+											<span class="team-info">Teachers</span>
+											<ul class="list-inline">
+												<li><a href="{{ teachers.whatsapp }}"><i class="fa fa-whatsapp"></i></a></li>
+												<li><a href="{{ teachers.telegram }}"><i class="fa fa-telegram"></i></a></li>
+												<li><a href="{{ teachers.teams }}"><i class="fa fa-viber"></i></a></li>
+												<li><a href="{{ teachers.viber }}"><i class="fa fa-teamspeak"></i></a></li>
+											</ul>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="item">
-							 <div class="dlab-box box-frame2 team-box">
-								<div class="dlab-thum"> 
-									<a href="teachers-details.html">
-										<img src="images/team/pic2.jpg" alt="">
-									</a>
-									<div class="overlay-bx">
-										<h5 class="team-title"><a href="teachers-details.html">Jone Doe</a></h5>
-										<span class="team-info">Teachers</span>
-										<ul class="list-inline">
-											<li><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
-											<li><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-											<li><a href="javascript:void(0);"><i class="fa fa-instagram"></i></a></li>
-											<li><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							 <div class="dlab-box box-frame3 team-box">
-								<div class="dlab-thum"> 
-									<a href="teachers-details.html">
-										<img src="images/team/pic3.jpg" alt="">
-									</a>
-									<div class="overlay-bx">
-										<h5 class="team-title"><a href="teachers-details.html">Jone Doe</a></h5>
-										<span class="team-info">Teachers</span>
-										<ul class="list-inline">
-											<li><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
-											<li><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-											<li><a href="javascript:void(0);"><i class="fa fa-instagram"></i></a></li>
-											<li><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="item">
-							 <div class="dlab-box box-frame4 team-box">
-								<div class="dlab-thum"> 
-									<a href="teachers-details.html">
-										<img src="images/team/pic4.jpg" alt="">
-									</a>
-									<div class="overlay-bx">
-										<h5 class="team-title"><a href="teachers-details.html">Jone Doe</a></h5>
-										<span class="team-info">Teachers</span>
-										<ul class="list-inline">
-											<li><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="javascript:void(0);"><i class="fa fa-google-plus"></i></a></li>
-											<li><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
-											<li><a href="javascript:void(0);"><i class="fa fa-instagram"></i></a></li>
-											<li><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
+						{% endfor %}
+
 					</div>
 				</div>
             </div>

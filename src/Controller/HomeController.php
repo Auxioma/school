@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\SliderRepository;
 use App\Repository\ComercialRepository;
 use App\Repository\ParalaxRepository;
+use App\Repository\TeachersRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -15,7 +16,8 @@ final class HomeController extends AbstractController
     public function __construct(
         private SliderRepository $sliderRepository,
         private ComercialRepository $comercialRepository,
-        private ParalaxRepository $paralaxRepository
+        private ParalaxRepository $paralaxRepository,
+        private TeachersRepository $teachersrepository
     )
     {
     }
@@ -31,6 +33,7 @@ final class HomeController extends AbstractController
             'sliders' => $this->sliderRepository->findBy(['lang' => $request->getLocale()]),
             'comercials' => $this->comercialRepository->findBy(['lang' => $request->getLocale()]),
             'paralaxs' => $this->paralaxRepository->findBy(['lang' => $request->getLocale()]),
+            'teachers' => $this->teachersrepository->findBy(['lang' => $request->getLocale()]),
         ]);
     }
 }
