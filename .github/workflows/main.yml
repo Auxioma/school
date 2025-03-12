@@ -1,0 +1,32 @@
+name: CD
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    env:
+      SSHPASS: ${{ secrets.APP_PASS }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4  # Updated from v2 to v4
+      
+      - name: APT UPDATE and INSTALL SSHPASS
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sshpass
+          
+      - name: Deploy application
+        run: |
+          sshpass -e ssh -o StrictHostKeyChecking=no ${{ secrets.APP_USER }}@${{ secrets.APP_HOST }} -p 5022 "
+          cd public_html/ &&
+          git pull &&
+          php composer.phar dump-env dev &&
+          php composer.phar install &&
+          php bin/console d:s:u --force &&
+          php composer.phar dump-env prod &&
+          php bin/console cache:clear && 
+          php bin/console cache:warmup"
