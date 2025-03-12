@@ -48,6 +48,22 @@
 							</li>
                             {% endfor %}
 							<li><a href="contect-us.html">Contact Us</a></li>
+
+							<li>
+							{% for locale in locales %}
+								{% if locale == app.request.locale %}
+								<a href="#" class="active">{{ locale }}</a>
+								{% endif %}  
+							{% endfor %}
+
+							<ul class="sub-menu">
+								{% for locale in locales %}
+								{% if locale != app.request.locale %}
+									<li><a href="#">{{ locale }}</a></li>
+								{% endif %}  
+								{% endfor %}
+							</ul>
+							</li>
 						</ul>		
                     </div>
                 </div>

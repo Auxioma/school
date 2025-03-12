@@ -24,10 +24,8 @@ jobs:
           sshpass -e ssh -o StrictHostKeyChecking=no ${{ secrets.APP_USER }}@${{ secrets.APP_HOST }} -p 5022 "
           cd public_html/ &&
           git pull &&
-          php composer.phar dump-env dev &&
           php composer.phar install &&
           php bin/console d:s:u --force &&
           php bin/console d:f:l -n &&
-          php composer.phar dump-env prod &&
           php bin/console cache:clear && 
           php bin/console cache:warmup"
