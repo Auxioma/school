@@ -1,0 +1,38 @@
+			<div class="section-full bg-white content-inner-2">
+                <div class="container">
+					<div class="section-head text-center">
+						<h2 class="head-title text-secondry">{{ 'blog'|trans }}</h2>
+						<p>{{ 'blog-p'|trans }}</p>
+					</div>
+					<div class="blog-carousel owl-carousel owl-theme dots-none sprite-nav owl-btn-center-lr">
+
+                        {% for blog in blogs %}
+
+						<div class="item">
+							<div class="blog-post blog-grid ">
+                                <div class="dlab-post-media frame-box">
+									<a href="blog-details.html"><img src="{{ asset('images/blog/grid/' ~ blog.images) }}" alt=""></a>
+								</div>
+                                <div class="dlab-info">
+                                    <div class="dlab-post-title">
+                                        <h4 class="post-title">
+                                            <a href="blog-details.html">
+                                                {{ blog.titre }}
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div class="dlab-post-text">
+                                       <p>{{ blog.description|u.truncate(60) }}</p>
+                                    </div>
+									<div class="dlab-post-readmore"> 
+										<a href="blog-details.html" title="READ MORE" rel="bookmark" class="btn-link">Read More</a>
+									</div>
+                                </div>
+                            </div>
+						</div>
+
+                        {% endfor %}
+
+					</div>
+				</div>
+            </div>

@@ -16,9 +16,9 @@ class CategoryFixtures extends Fixture
          */
         $category = [
             1 => [
-                'name' => 'adult',
+                'name' => 'занятия',
                 'picture' => 'adult.jpg',
-                'slug' => 'adult',
+                'slug' => 'занятия',
                 'isActive' => true,
                 'lang' => 'ru',
                 'parent' => [
@@ -49,9 +49,9 @@ class CategoryFixtures extends Fixture
                 ]
             ],
             2 => [
-                'name' => 'children',
+                'name' => 'магазин',
                 'picture' => 'children.jpg',
-                'slug' => 'children',
+                'slug' => 'магазин',
                 'isActive' => true,
                 'lang' => 'ru',
                 'parent' => [

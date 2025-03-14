@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AboutController!{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+
+        {% include 'partials/mignature/breadcrumb.html.twig' %}
+
+        <div class="content-block">
+			<div class="section-full bg-white content-inner-1 about-kids" style="background-image:url(images/line2.png); background-size:contain;background-repeat: no-repeat;background-position: center;">
+                <div class="container">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12">
+							<div class="section-head text-center">
+								<h2 class="head-title text-secondry">{{ 'Welcome-To'|trans }}</h2>
+								<p>{{ 'Welcome-To-p'|trans }}</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="icon-bx-wraper right m-b30 about-iconbx">
+								<div class="icon-bx-sm radius bg-pink"> <a href="javascript:void(0);" class="icon-cell"><i class="flaticon-bricks"></i></a> </div>
+								<div class="icon-content">
+									<h5 class="dlab-tilte">
+										{{ 'Active'|trans }}
+									</h5>
+									<p>{{ 'Active-p'|trans }}</p>
+								</div>
+							</div>
+							<div class="icon-bx-wraper right m-b30 about-iconbx">
+								<div class="icon-bx-sm radius bg-blue"> <a href="javascript:void(0);" class="icon-cell"><i class="flaticon-boy"></i></a> </div>
+								<div class="icon-content">
+									<h5 class="dlab-tilte">{{ 'expert'|trans }}</h5>
+									<p>{{ 'expert-p'|trans }}</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6 col-sm-12 m-b30 d-md-none d-lg-block d-sm-none">
+							<img src="images/about/about-2.jpg" alt=""/>
+						</div>
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="icon-bx-wraper left m-b30 about-iconbx">
+								<div class="icon-bx-sm bg-green radius"> <a href="javascript:void(0);" class="icon-cell"><i class="flaticon-bus"></i></a> </div>
+								<div class="icon-content">
+									<h5 class="dlab-tilte">{{ 'strategie'|trans }}</h5>
+									<p>{{ 'strategie-p'|trans }}</p>
+								</div>
+							</div>
+							<div class="icon-bx-wraper left m-b30 about-iconbx">
+								<div class="icon-bx-sm bg-orange radius"> <a href="javascript:void(0);" class="icon-cell"><i class="flaticon-ice-cream"></i></a> </div>
+								<div class="icon-content">
+									<h5 class="dlab-tilte">{{ 'day'|trans }}</h5>
+									<p>{{ 'day-p'|trans }}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="childern-box">
+					<div class="childern-1"><img src="images/background/children1.png" alt=""/></div>
+					<div class="childern-2"><img src="images/background/children2.png" alt=""/></div>
+				</div>
+            </div>
+			<div class="section-full bg-white content-inner-2 about-content bg-img-fix" style="background-image:url(images/background/bg100.jpg);">
+				<div class="about-overlay-box"></div>
+                <div class="container">
+					<div class="row">
+						<div class="col-lg-6 col-md-12 col-sm-12 col-12 wow fadeIn" data-wow-delay="0.2s"  data-wow-duration="2s">
+							<div class="section-head">
+								<h2 class="head-title text-yellow">
+                                    {% set texte = 'Welcometo'|trans %}
+                                    {% set mots = texte|split(" ") %}
+									{% set result = "" %}
+									{% for mot in mots %}
+										{% set result = result ~ mot ~ " " %}
+										{% if loop.index % 3 == 0 %}
+											{% set result = result ~ "<br>" %}
+										{% endif %}
+									{% endfor %}
+                                    {{ result|raw }}
+                                </h2>
+								<p class="text-white">
+                                    {{ 'edeucation'|trans }}
+                                </p>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-12 col-12"></div>
+					</div>
+				</div>
+            </div>
+			<div class="section-full bg-white content-inner" style="background-image:url(images/line2.png); background-size:contain;background-repeat: no-repeat;background-position: center;">
+                <div class="container">
+					<div class="section-head text-center">
+						<h2 class="head-title text-secondry">{{ 'about_the_teachers'|trans }}</h2>
+						<p>{{ 'about_the_teachers_paragraf'|trans }}</p>
+					</div>
+					{% include 'partials/mignature/teachers.html.twig' %}
+				</div>
+            </div>
+
+			<div class="section-full bg-white content-inner-2 about-content bg-img-fix" style="background-image:url(images/background/bg6.jpg);">
+                <div class="container">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12 col-12 wow fadeIn about-text" data-wow-delay="0.2s" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-delay: 0.2s; animation-name: fadeIn;">
+							<div class="section-head text-center">
+								<h4 class="text-white">{{ 'session'|trans }}</h4>
+								<h2>{{ 'session-h2'|trans }} <br/><span class="text-yellow">{{ 'session-tel'|trans }}</span></h2>
+								<a href="" class="btn btn-md radius-xl">{{ 'ReadMore'|trans }}</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% include 'partials/mignature/blog.html.twig' %}
+
+		</div>
+    </div>
+    
+{% endblock %}

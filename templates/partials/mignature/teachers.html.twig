@@ -1,0 +1,23 @@
+					<div class="team-carousel owl-carousel owl-theme dots-none sprite-nav">
+						{% for teachers in teachers %}
+							<div class="item">
+								<div class="dlab-box box-frame1 team-box">
+									<div class="dlab-thum"> 
+										<a href="teachers-details.html">
+											<img src="{{ asset('images/team/' ~ teachers.pictures) }}" alt="">
+										</a>
+										<div class="overlay-bx">
+											<h5 class="team-title"><a href="teachers-details.html">{{ teachers.name }}</a></h5>
+											<span class="team-info">Teachers</span>
+											<ul class="list-inline">
+												<li><a href="{{ teachers.whatsapp }}"><i class="fa fa-whatsapp"></i></a></li>
+												<li><a href="{{ teachers.telegram }}"><i class="fa fa-telegram"></i></a></li>
+												<li><a href="{{ teachers.teams }}"><i class="fa fa-viber"></i></a></li>
+												<li><a href="{{ teachers.viber }}"><i class="fa fa-teamspeak"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>

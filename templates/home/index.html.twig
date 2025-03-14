@@ -119,30 +119,7 @@
 						<h2 class="head-title text-secondry"><p>{{ 'about_the_teachers'|trans }}</p></h2>
 						<p>{{ 'about_the_teachers_paragraf'|trans }}</p>
 					</div>
-					<div class="team-carousel owl-carousel owl-theme dots-none sprite-nav">
-						{% for teachers in teachers %}
-							<div class="item">
-								<div class="dlab-box box-frame1 team-box">
-									<div class="dlab-thum"> 
-										<a href="teachers-details.html">
-											<img src="{{ asset('images/team/' ~ teachers.pictures) }}" alt="">
-										</a>
-										<div class="overlay-bx">
-											<h5 class="team-title"><a href="teachers-details.html">{{ teachers.name }}</a></h5>
-											<span class="team-info">Teachers</span>
-											<ul class="list-inline">
-												<li><a href="{{ teachers.whatsapp }}"><i class="fa fa-whatsapp"></i></a></li>
-												<li><a href="{{ teachers.telegram }}"><i class="fa fa-telegram"></i></a></li>
-												<li><a href="{{ teachers.teams }}"><i class="fa fa-viber"></i></a></li>
-												<li><a href="{{ teachers.viber }}"><i class="fa fa-teamspeak"></i></a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-						{% endfor %}
-
-					</div>
+					{% include 'partials/mignature/teachers.html.twig' %}
 				</div>
             </div>
 			<div class="section-full bg-white content-inner-1">
@@ -170,72 +147,7 @@
 					</div>
 				</div>
             </div>
-			{#
-			<div class="section-full bg-white content-inner">
-				<div class="container">
-					<div class="section-head text-center">
-						<h2 class="head-title text-secondry">From the Blog</h2>
-						<p>We have an excellent teacher to child ratio at our Kindergarten to ensure that each child receives the attention he or she needs</p>
-					</div>
-					<div class="blog-carousel owl-carousel owl-theme dots-none sprite-nav owl-btn-center-lr">
-						<div class="item">
-							<div class="blog-post blog-grid ">
-                                <div class="dlab-post-media frame-box">
-									<a href="blog-details.html"><img src="images/blog/grid/pic1.jpg" alt=""></a>
-								</div>
-                                <div class="dlab-info">
-                                    <div class="dlab-post-title">
-                                        <h4 class="post-title"><a href="blog-details.html">The Biggest Contribution Of Education Blog To Humanity.</a></h4>
-                                    </div>
-                                    <div class="dlab-post-text">
-                                       <p>Separation Tips You and your child are about to have an amazing and fun...</p>
-                                    </div>
-									<div class="dlab-post-readmore"> 
-										<a href="blog-details.html" title="READ MORE" rel="bookmark" class="btn-link">Read More</a>
-									</div>
-                                </div>
-                            </div>
-						</div>
-						<div class="item">
-							<div class="blog-post blog-grid ">
-                                <div class="dlab-post-media frame-box">
-									<a href="blog-details.html"><img src="images/blog/grid/pic2.jpg" alt=""></a>
-								</div>
-                                <div class="dlab-info">
-                                    <div class="dlab-post-title">
-                                        <h4 class="post-title"><a href="blog-details.html">The Truth About Education Blog Is About To Be Revealed.</a></h4>
-                                    </div>
-                                    <div class="dlab-post-text">
-                                       <p>Separation Tips You and your child are about to have an amazing and fun...</p>
-                                    </div>
-									<div class="dlab-post-readmore"> 
-										<a href="blog-details.html" title="READ MORE" rel="bookmark" class="btn-link">Read More</a>
-									</div>
-                                </div>
-                            </div>
-						</div>
-						<div class="item">
-							<div class="blog-post blog-grid ">
-                                <div class="dlab-post-media frame-box">
-									<a href="blog-details.html"><img src="images/blog/grid/pic3.jpg" alt=""></a>
-								</div>
-                                <div class="dlab-info">
-                                    <div class="dlab-post-title">
-                                        <h4 class="post-title"><a href="blog-details.html">Five Reasons Why People Like Education Blog.</a></h4>
-                                    </div>
-                                    <div class="dlab-post-text">
-                                       <p>Separation Tips You and your child are about to have an amazing and fun...</p>
-                                    </div>
-									<div class="dlab-post-readmore"> 
-										<a href="blog-details.html" title="READ MORE" rel="bookmark" class="btn-link">Read More</a>
-									</div>
-                                </div>
-                            </div>
-						</div>
-					</div>
-				</div>
-            </div>
-			#}
+			{% include 'partials/mignature/blog.html.twig' %}
 		</div>
     </div>
 	<!-- Content END-->
