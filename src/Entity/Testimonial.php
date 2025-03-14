@@ -23,6 +23,9 @@ class Testimonial
     #[ORM\ManyToOne(inversedBy: 'testimonials')]
     private ?User $relation = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $lang = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,18 @@ class Testimonial
     public function setRelation(?User $relation): static
     {
         $this->relation = $relation;
+
+        return $this;
+    }
+
+    public function getLang(): ?string
+    {
+        return $this->lang;
+    }
+
+    public function setLang(string $lang): static
+    {
+        $this->lang = $lang;
 
         return $this;
     }

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\DataFixtures;
 
 use App\Entity\User;
@@ -24,9 +23,8 @@ class UserFixtures extends Fixture
         $admin->setPassword($this->passwordHasher->hashPassword($admin, '000'));
         $admin->setIsVerified(true);
         $admin->setRoles(['ROLE_ADMIN']);
-
+        $this->addReference("user_1", $admin);
         $manager->persist($admin);
-        $this->addReference('user_admin1', $admin); // Ajout de la référence
 
         // Création d'autres utilisateurs
         for ($i = 1; $i <= 5; $i++) {
@@ -35,7 +33,7 @@ class UserFixtures extends Fixture
             $user->setPassword($this->passwordHasher->hashPassword($user, 'password'));
             $user->setIsVerified(true);
             $user->setRoles(['ROLE_USER']);
-
+           
             $manager->persist($user);
         }
 

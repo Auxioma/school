@@ -3,9 +3,10 @@
 namespace App\Controller;
 
 use App\Repository\SliderRepository;
-use App\Repository\ComercialRepository;
 use App\Repository\ParalaxRepository;
 use App\Repository\TeachersRepository;
+use App\Repository\ComercialRepository;
+use App\Repository\TestimonialRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -17,7 +18,8 @@ final class HomeController extends AbstractController
         private SliderRepository $sliderRepository,
         private ComercialRepository $comercialRepository,
         private ParalaxRepository $paralaxRepository,
-        private TeachersRepository $teachersrepository
+        private TeachersRepository $teachersrepository,
+        private TestimonialRepository $testimonialRepository,
     )
     {
     }
@@ -34,6 +36,7 @@ final class HomeController extends AbstractController
             'comercials' => $this->comercialRepository->findBy(['lang' => $request->getLocale()]),
             'paralaxs' => $this->paralaxRepository->findBy(['lang' => $request->getLocale()]),
             'teachers' => $this->teachersrepository->findBy(['lang' => $request->getLocale()]),
+            'testimonials' => $this->testimonialRepository->findBy(['lang' => $request->getLocale()]),
         ]);
     }
 }
