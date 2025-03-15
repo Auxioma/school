@@ -42,8 +42,10 @@
                                 {% if categorie.categories %}
                                         <ul class="sub-menu">
                                         {% for subcategorie in categorie.categories %}
-                                            <li><a href="about-1.html">{{ subcategorie.name }}</a></li>
-                                        {% endfor %}     
+											{% if subcategorie.lessons|length > 0 %}
+												<li><a href="{{ path('app_lessons', {slug: (subcategorie.lessons|first).slug}) }}">{{ subcategorie.name }}</a></li>
+											{% endif %}                                        
+										{% endfor %}     
                                         </ul>
                                 {% endif %}
 							</li>

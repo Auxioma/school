@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LessonsController!{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+		{% include 'partials/mignature/breadcrumb.html.twig' %}
+        <div class="content-block">
+			<div class="section-full bg-white content-inner" style="background-image:url(images/line2.png); background-size:contain;background-repeat: no-repeat;background-position: center;">
+                <div class="container">
+					<div class="row">
+						<div class="col-lg-8 col-md-12 col-sm-12 m-b15">
+							{{ lesson.description|raw }}
+						</div>
+						<div class="col-lg-4 col-md-12 col-sm-12">
+							<div class="widget">
+                                <h5 class="widget-title">Search</h5>
+                                <div class="search-bx style-1">
+                                    <form role="search" method="post">
+                                        <div class="input-group">
+                                            <input name="text" class="form-control" placeholder="Enter your keywords..." type="text">
+                                            <span class="input-group-btn">
+												<button type="submit" class="fa fa-search text-primary"></button>
+                                            </span> 
+										</div>
+                                    </form>
+                                </div>
+                            </div>
+							<div class="details-tbl widget">
+								<ul class="class-details">
+									<li>
+										<div class="name"><i class="la la-clock-o"></i>Start Date</div>
+										<div class="info">24 March 2017</div>
+									</li>
+									<li>
+										<div class="name"><i class="la la-calendar-check-o"></i>Years Old</div>
+										<div class="info">6-8 Years</div>
+									</li>
+									<li>
+										<div class="name"><i class="la la-arrows"></i>Class Size</div>
+										<div class="info">20-30 Kids</div>
+									</li>
+									<li>
+										<div class="name"><i class="la la-hourglass"></i>Carry Time</div>
+										<div class="info">5 Hours/6 Days</div>
+									</li>
+									<li>
+										<div class="name"><i class="la la-history"></i>Coures Duration</div>
+										<div class="info">10-12 Month</div>
+									</li>
+									<li>
+										<div class="name"><i class="la la-clock-o"></i>Class Time</div>
+										<div class="info">9:30am-5:30pm</div>
+									</li>
+									<li>
+										<div class="name"><i class="la la-star-o"></i>Rating</div>
+										<div class="info rating">
+										<i class="fa fa-star" aria-hidden="true"></i>
+										<i class="fa fa-star" aria-hidden="true"></i>
+										<i class="fa fa-star" aria-hidden="true"></i>
+										<i class="fa fa-star" aria-hidden="true"></i>
+										<i class="fa fa-star" aria-hidden="true"></i>
+										</div>
+									</li>
+									<li>
+										<div class="name"><i class="la la-user"></i>Tution Free</div>
+										<div class="info">$ 250.00</div>
+									</li>
+								</ul>
+							</div>
+							<div class="widget recent-posts-entry">
+								<h5 class="widget-title">Recent Posts</h5>
+								<div class="widget-post-bx">
+									<div class="widget-post clearfix">
+										<div class="dlab-post-media"> <img src="images/blog/recent-blog/pic1.jpg" width="200" height="143" alt=""> </div>
+										<div class="dlab-post-info">
+											<div class="dlab-post-header">
+												<h6 class="post-title"><a href="blog-details.html">Reasons Why You Cannot Learn Kids Education Well.</a></h6>
+											</div>
+											<div class="dlab-post-meta">
+												<ul>
+													<li class="post-author">By Jone</li>
+													<li class="post-comment"><i class="fa fa-comments"></i> 28</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<div class="widget-post clearfix">
+										<div class="dlab-post-media"> <img src="images/blog/recent-blog/pic2.jpg" width="200" height="143" alt=""> </div>
+										<div class="dlab-post-info">
+											<div class="dlab-post-header">
+												<h6 class="post-title"><a href="blog-details.html">Small But Important Things To Observe In Kids.</a></h6>
+											</div>
+											<div class="dlab-post-meta">
+												<ul>
+													<li class="post-author">By Jone</li>
+													<li class="post-comment"><i class="fa fa-comments"></i> 28</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="widget widget_gallery gallery-grid-4">
+                                <h5 class="widget-title">Our services</h5>
+                                <ul id="lightgallery">
+									<li><span data-exthumbimage="images/gallery/pic2.jpg" data-src="images/gallery/pic2.jpg" class="check-km"><img src="images/gallery/pic2.jpg" alt=""></span></li>
+									<li><span data-exthumbimage="images/gallery/pic1.jpg" data-src="images/gallery/pic1.jpg" class="check-km"><img src="images/gallery/pic1.jpg" alt=""></span></li>
+									<li><span data-exthumbimage="images/gallery/pic5.jpg" data-src="images/gallery/pic5.jpg" class="check-km"><img src="images/gallery/pic5.jpg" alt=""></span></li>
+									<li><span data-exthumbimage="images/gallery/pic7.jpg" data-src="images/gallery/pic7.jpg" class="check-km"><img src="images/gallery/pic7.jpg" alt=""></span></li>
+									<li><span data-exthumbimage="images/gallery/pic8.jpg" data-src="images/gallery/pic8.jpg" class="check-km"><img src="images/gallery/pic8.jpg" alt=""></span></li>
+									<li><span data-exthumbimage="images/gallery/pic9.jpg" data-src="images/gallery/pic9.jpg" class="check-km"><img src="images/gallery/pic9.jpg" alt=""></span></li>
+									<li><span data-exthumbimage="images/gallery/pic3.jpg" data-src="images/gallery/pic3.jpg" class="check-km"><img src="images/gallery/pic3.jpg" alt=""></span></li>
+									<li><span data-exthumbimage="images/gallery/pic4.jpg" data-src="images/gallery/pic4.jpg" class="check-km"><img src="images/gallery/pic4.jpg" alt=""></span></li>
+								</ul>
+                            </div>
+						</div>
+					</div>
+				</div>
+            </div>
+		</div>
+    </div>
+    
+{% endblock %}

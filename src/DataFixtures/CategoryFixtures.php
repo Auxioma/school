@@ -23,62 +23,69 @@ class CategoryFixtures extends Fixture
                 'lang' => 'ru',
                 'parent' => [
                     1 => [
-                        'name' => 'lesson 1',
+                        'name' => 'онлайн',
                         'picture' => 'school.jpg',
-                        'slug' => 'lesson-1',
+                        'slug' => 'онлайн',
                         'isActive' => true,
                         'lang' => 'ru',
                         'parent' => null
                     ],
                     2 => [
-                        'name' => 'lesson 2',
+                        'name' => 'дети',
                         'picture' => 'school.jpg',
-                        'slug' => 'lesson-2',
+                        'slug' => 'дети',
                         'isActive' => true,
                         'lang' => 'ru',
                         'parent' => null
                     ],
                     3 => [
-                        'name' => 'lesson 3',
+                        'name' => 'начинающие',
                         'picture' => 'school.jpg',
-                        'slug' => 'lesson-3',
-                        'isActive' => true,
-                        'lang' => 'ru',
-                        'parent' => null
-                    ]
-                ]
-            ],
-            2 => [
-                'name' => 'магазин',
-                'picture' => 'children.jpg',
-                'slug' => 'магазин',
-                'isActive' => true,
-                'lang' => 'ru',
-                'parent' => [
-                    1 => [
-                        'name' => 'lesson 1',
-                        'picture' => 'school.jpg',
-                        'slug' => 'lesson-1',
+                        'slug' => 'начинающие',
                         'isActive' => true,
                         'lang' => 'ru',
                         'parent' => null
                     ],
-                    2 => [
-                        'name' => 'lesson 2',
+                    4 => [
+                        'name' => 'разговорный',
                         'picture' => 'school.jpg',
-                        'slug' => 'lesson-2',
+                        'slug' => 'разговорный',
                         'isActive' => true,
                         'lang' => 'ru',
                         'parent' => null
                     ],
-                    3 => [
-                        'name' => 'lesson 3',
+                    5 => [
+                        'name' => 'экзамены',
                         'picture' => 'school.jpg',
-                        'slug' => 'lesson-3',
+                        'slug' => 'экзамены',
                         'isActive' => true,
                         'lang' => 'ru',
                         'parent' => null
-                    ]
+                    ],
+                    6 => [
+                        'name' => 'лето',
+                        'picture' => 'school.jpg',
+                        'slug' => 'лето',
+                        'isActive' => true,
+                        'lang' => 'ru',
+                        'parent' => null
+                    ],
+                    7 => [
+                        'name' => 'Нормандия',
+                        'picture' => 'school.jpg',
+                        'slug' => 'Нормандия',
+                        'isActive' => true,
+                        'lang' => 'ru',
+                        'parent' => null
+                    ],
+                    7 => [
+                        'name' => 'вопросы — ответы',
+                        'picture' => 'school.jpg',
+                        'slug' => 'вопросы — ответы',
+                        'isActive' => true,
+                        'lang' => 'ru',
+                        'parent' => null
+                    ],
                 ]
             ]
         ];
