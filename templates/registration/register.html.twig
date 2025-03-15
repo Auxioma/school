@@ -3,27 +3,55 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
+	<div
+		class="page-content">
+		{% include 'partials/mignature/breadcrumb.html.twig' %}
+		<div class="content-block">
+			<div class="section-full content-inner-2">
+				<div class="container">
 
+					<div class="row contact-box">
+						<div class="section-head text-center col-md-12">
+							<h2 class="text-secondry">Registration</h2>
+						</div>
+						
+                        {{ form_start(registrationForm, {attr: {"class":"dzForm col-md-12"}}) }}
+                            {% for flash_error in app.flashes('verify_email_error') %}
+                                <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                            {% endfor %}
+                            {{ form_errors(registrationForm) }}
+							<input type="hidden" value="Contact" name="dzToDo">
+							<div class="row">
+								<div class="col-md-3 col-sm-3"></div>
+								<div class="col-md-6 col-sm-3">
+									<div class="form-group">
+                                        {{ form_widget(registrationForm.email) }}
+									</div>
+								</div>
+								<div class="col-md-3 col-sm-3"></div>
+							</div>
+							<div class="row">
+								<div class="col-md-3 col-sm-3"></div>
+								<div class="col-md-6 col-sm-6">
+									<div class="form-group">
+                                        {{ form_widget(registrationForm.plainPassword) }}
+									</div>
+								</div>
+								<div class="col-md-3 col-sm-3"></div>
+							</div>
+                            {{ form_row(registrationForm.agreeTerms) }}
+							<div class="col-md-12 col-sm-12 text-center">
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+								<button name="submit" type="submit" value="Submit" class="btn radius-xl btn-lg">Sign in<span></span>
+								</button>
+							</div>
+						</div>
+					{{ form_end(registrationForm) }}
 
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
-
-
-
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
-
-    <h1>Register</h1>
-
-    {{ form_errors(registrationForm) }}
-
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
 {% endblock %}
