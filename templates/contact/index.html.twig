@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+
+        <div class="content-block">
+			<div class="section-full bg-white">
+                <div class="container">
+					<div class="row align-items-center content-inner">
+						<div class="col-lg-4 col-md-4 col-sm-6">
+							<div class="icon-bx-wraper m-b30 left">
+								<div class="icon-md m-b20 m-t5">
+									<a href="javascript:void(0)" class="icon-cell text-blue">
+										<i class="ti-headphone-alt"></i>
+									</a>
+								</div>
+								<div class="icon-content">
+									<h4 class="dlab-tilte m-b5">Phone</h4>
+									<p>Phone 01:(+032) 3456 7890 <br/> Phone 02: (+032) 3427 7670</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-6">
+							<div class="icon-bx-wraper m-b30 left">
+								<div class="icon-md m-b20 m-t5">
+									<a href="javascript:void(0)" class="icon-cell text-green">
+										<i class="ti-location-pin"></i>
+									</a>
+								</div>
+								<div class="icon-content">
+									<h4 class="dlab-tilte m-b5">Address</h4>
+									<p>Spring Store London Oxford Street, 012 United Kingdom</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-12">
+							<div class="icon-bx-wraper m-b30 left">
+								<div class="icon-md m-b20 m-t5">
+									<a href="javascript:void(0)" class="icon-cell text-orange">
+										<i class="ti-email"></i>
+									</a>
+								</div>
+								<div class="icon-content">
+									<h4 class="dlab-tilte m-b5">Email</h4>
+									<p>Supportstore@msimple.net <br/> Info@Simplenet.net</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row contact-box content-inner-5">
+						<div class="section-head text-center col-md-12">
+							<h2 class="text-secondry">Contact Me</h2>
+							<p class="m-b0">Meh synth Schlitz, tempor duis single-origin coffee ea next level ethnic fingerstache fanny pack nostrud. Photo booth anim 8</p>
+						</div>
+						
+						{{ form_start(form, {'attr': {'class': 'col-md-12'}}) }}
+
+							<div class="row">
+								<div class="col-md-4 col-sm-4">
+									<div class="form-group">
+										{{ form_widget(form.nom) }}
+									</div>
+								</div>
+								<div class="col-md-4 col-sm-4">
+									<div class="form-group">
+										{{ form_widget(form.mail) }}
+									</div>
+								</div>
+								<div class="col-md-4 col-sm-4">
+									<div class="form-group">
+										{{ form_widget(form.phone) }}
+									</div>
+								</div>
+								<div class="col-md-12 col-sm-12">
+									<div class="form-group">
+										{{ form_widget(form.msg) }}
+									</div>
+								</div>
+								<div class="col-md-12 col-sm-12 text-center">
+									<button type="submit" class="btn radius-xl btn-lg">Send Message</button>
+								</div>
+							</div>
+						{{ form_end(form) }}
+					</div>
+				</div>
+            </div>
+		</div>
+{% endblock %}

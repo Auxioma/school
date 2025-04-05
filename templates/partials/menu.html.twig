@@ -50,7 +50,8 @@
                                 {% endif %}
 							</li>
                             {% endfor %}
-							<li><a href="contect-us.html">Contact Us</a></li>
+							<li><a href="{{ path('app_contact') }}">Contact Us</a></li>
+							<li><a href="{{ path('app_calendar') }}">Reservations</a></li>
 
 							<li>
 							{% for locale in locales %}

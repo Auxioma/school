@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Category;
+use App\Entity\Lesson;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -109,6 +110,15 @@ class CategoryFixtures extends Fixture
                 $categorys->setLang($value['lang']);
                 $categorys->setParent($category);
                 $manager->persist($categorys);
+
+                // I'm update a lesson
+                $lesson = new Lesson();
+                $lesson->setTitre('titre-' . $key);
+                $lesson->setSlug('slug-'.$key);
+                $lesson->setDescription('description' . $key);
+                $lesson->setLang('ru');
+                $lesson->setCategories($categorys);
+                $manager->persist($lesson);
             }
 
             $manager->flush();

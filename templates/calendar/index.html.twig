@@ -1,0 +1,88 @@
+{# Calendrier Twig avec mois et années #}
+{% set currentYear = "now"|date('Y') %}
+{% set currentMonth = "now"|date('m') %}
+
+<div class="calendar">
+    <div class="calendar-header">
+        <button class="prev-month">&lt;</button>
+        <h2>{{ "now"|date('F Y') }}</h2>
+        <button class="next-month">&gt;</button>
+    </div>
+
+    <div class="calendar-grid">
+        {# En-têtes des jours #}
+        {% set days = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'] %}
+        {% for day in days %}
+            <div class="calendar-day-header">{{ day }}</div>
+        {% endfor %}
+
+        {# Jours du mois #}
+        {% set firstDayOfMonth = date(currentYear ~ '-' ~ currentMonth ~ '-01') %}
+        {% set daysInMonth = date(currentYear ~ '-' ~ currentMonth ~ '-01').format('t')|number_format %}
+        {% set startingDay = firstDayOfMonth.format('N') %}
+
+        {# Remplir les cases vides avant le premier jour #}
+        {% for i in 1..(startingDay - 1) %}
+            <div class="calendar-day empty"></div>
+        {% endfor %}
+
+        {# Jours du mois #}
+        {% for day in 1..daysInMonth %}
+            <div class="calendar-day">
+                {{ day }}
+                {# Vous pouvez ajouter des événements ici #}
+            </div>
+        {% endfor %}
+    </div>
+
+    {# Sélecteur d'année #}
+    <div class="year-selector">
+        <select>
+            {% for year in (currentYear - 5)..(currentYear + 5) %}
+                <option value="{{ year }}" {% if year == currentYear %}selected{% endif %}>
+                    {{ year }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+{# Style CSS de base #}
+<style>
+.calendar {
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid #ddd;
+    font-family: Arial, sans-serif;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 10px;
+}
+
+.calendar-day-header, .calendar-day {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #eee;
+}
+
+.calendar-day.empty {
+    background-color: #f9f9f9;
+}
+
+.year-selector {
+    text-align: center;
+    padding: 10px;
+}
+</style>
