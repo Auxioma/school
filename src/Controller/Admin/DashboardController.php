@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Blog;
 use App\Entity\Category;
 use App\Entity\Lesson;
 use App\Entity\Translation;
@@ -31,5 +32,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Chaine de traduction', 'fas fa-list', Translation::class);
         yield MenuItem::linkToCrud('Menu', 'fas fa-list', Category::class);
         yield MenuItem::linkToCrud('Lessons', 'fas fa-list', Lesson::class);
+        yield MenuItem::linkToCrud('Blog', 'fas fa-list', Blog::class);
     }
 }

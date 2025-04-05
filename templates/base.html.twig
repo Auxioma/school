@@ -12,7 +12,8 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/plugins.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/templete.css') }}">
-	<link class="skin" rel="stylesheet" type="text/css" href="{{ asset('css/skin/skin-1.css') }}">   
+	<link class="skin" rel="stylesheet" type="text/css" href="{{ asset('css/skin/skin-1.css') }}">  
+    {% block stylesheet %}{% endblock %} 
     </head>
     <body id="bg">
         <div class="page-wraper">

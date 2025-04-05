@@ -15,7 +15,7 @@
 							<h2 class="text-secondry">Registration</h2>
 						</div>
 						
-                        {{ form_start(registrationForm, {attr: {"class":"dzForm col-md-12"}}) }}
+                        {{ form_start(registrationForm, {attr: {"class":"col-md-12"}}) }}
                             {% for flash_error in app.flashes('verify_email_error') %}
                                 <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
                             {% endfor %}
@@ -39,7 +39,15 @@
 								</div>
 								<div class="col-md-3 col-sm-3"></div>
 							</div>
-                            {{ form_row(registrationForm.agreeTerms) }}
+							<div class="row">
+							<div class="col-md-3 col-sm-3"></div>
+							<div class="col-md-6 col-sm-6">
+								{{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'checkregister'}}) }}
+								<p class="ml-4">Veuillez accepter les condition de utilisaation du site</p>
+							</div>
+							<div class="col-md-3 col-sm-3"></div></div>
+
+                            
 							<div class="col-md-12 col-sm-12 text-center">
                                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 								<button name="submit" type="submit" value="Submit" class="btn radius-xl btn-lg">Sign in<span></span>
@@ -55,3 +63,11 @@
 </div>
 
 {% endblock %}
+{% block stylesheet %}
+	<style>
+		.checkregister {
+			opacity:1!important;
+			margin: 5px 0;
+		}
+	</style>
+{% endblock %} 

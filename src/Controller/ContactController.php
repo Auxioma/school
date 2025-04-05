@@ -37,7 +37,7 @@ final class ContactController extends AbstractController
                 ->context([
                     'data' => $data
                 ]);
-            $mailer->send($email); // ✅ ENVOI EFFECTIF
+            $mailer->send($email);
         }
         
         return $this->render('contact/index.html.twig', [
