@@ -7,48 +7,71 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CalendarController extends AbstractController
 {
-    #[Route('/calendar/{year}/{month}', name: 'app_calendar', defaults: ['year' => null, 'month' => null], requirements: ['year' => '\\d+', 'month' => '\\d+'])]
-    public function index(?int $year, ?int $month): Response
+    #[Route('/calendar/{year}', name: 'app_calendar', defaults: ['year' => null], requirements: ['year' => '\\d+'])]
+    public function index(?int $year): Response
     {
-        $currentDate = new \DateTime();
-        $year = $year ?? (int) $currentDate->format('Y');
-        $month = $month ?? (int) $currentDate->format('m');
-        
-        if ($month < 1) {
-            $month = 12;
-            $year--;
-        } elseif ($month > 12) {
-            $month = 1;
-            $year++;
-        }
+        $now = new \DateTime();
+        $currentYear = (int) $now->format('Y');
+        $currentMonth = (int) $now->format('n');
 
-        $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
-        $firstDayOfMonth = new \DateTime("$year-$month-01");
-        $startWeekday = (int) $firstDayOfMonth->format('N');
+        // Si aucun paramètre n'est passé, on prend l'année en cours
+        $year = $year ?? $currentYear;
 
-        $calendar = [];
-        $week = array_fill(0, 7, null);
-        
-        for ($i = 1, $day = 1 - ($startWeekday - 1); $day <= $daysInMonth; $day++) {
-            if ($day > 0) {
-                $week[$i % 7] = $day;
+        $monthNames = [
+            'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
+            'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
+        ];
+
+        $weekDays = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+
+        $yearCalendar = [];
+
+        // Afficher les 12 mois à partir du mois courant
+        for ($i = 0; $i < 12; $i++) {
+            $month = (($currentMonth - 1 + $i) % 12) + 1;
+            $monthYear = $year;
+
+            // Si on dépasse décembre, on passe à l'année suivante
+            if ($currentMonth + $i > 12) {
+                $monthYear++;
             }
-            if ($i % 7 == 0 || $day == $daysInMonth) {
-                $calendar[] = $week;
+
+            $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $monthYear);
+            $firstDayOfMonth = new \DateTime("$monthYear-$month-01");
+            $startWeekday = (int) $firstDayOfMonth->format('N'); // 1 (Lun) à 7 (Dim)
+
+            $calendar = [];
+            $week = array_fill(0, 7, null);
+            $dayCounter = 1;
+
+            // Remplissage du premier week
+            for ($k = $startWeekday - 1; $k < 7 && $dayCounter <= $daysInMonth; $k++) {
+                $week[$k] = $dayCounter++;
+            }
+            $calendar[] = $week;
+
+            // Semaine suivantes
+            while ($dayCounter <= $daysInMonth) {
                 $week = array_fill(0, 7, null);
+                for ($k = 0; $k < 7 && $dayCounter <= $daysInMonth; $k++) {
+                    $week[$k] = $dayCounter++;
+                }
+                $calendar[] = $week;
             }
-            $i++;
+
+            $yearCalendar[] = [
+                'month' => $month,
+                'year' => $monthYear,
+                'name' => $monthNames[$month - 1],
+                'days' => $calendar
+            ];
         }
 
         return $this->render('calendar/index.html.twig', [
             'year' => $year,
-            'month' => $month,
-            'calendar' => $calendar,
-            'monthNames' => [
-                'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-                'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
-            ],
-            'weekDays' => ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']
+            'calendar' => $yearCalendar,
+            'weekDays' => $weekDays,
+            'currentMonth' => $currentMonth
         ]);
     }
 }
