@@ -11,7 +11,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class BlogFixtures extends Fixture implements DependentFixtureInterface
+class BlogFixtures extends Fixture implements DependentFixtureInterface 
 {
     private SluggerInterface $slugger;
 

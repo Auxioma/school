@@ -1,83 +1,89 @@
-    <header class="site-header header mo-left">
-		<div class="top-bar">
-			<div class="container">
-				<div class="row d-flex justify-content-between">
-					<div class="dlab-topbar-left">
-						<ul>
-							<li><i class="fa fa-phone m-r5"></i></li>
-                            <li><i class="fa fa-instagram m-r5"></i></i>
-                            <li><i class="fa fa-whatsapp m-r5"></i>
-						</ul>
-					</div>
-					<div class="dlab-topbar-right">
-						<ul>
-							<li><i class="fa fa-clock-o m-r5"></i> Opening Time : 9:30am-5:30pm</li>
-						</ul>
-					</div>
+<header class="site-header header mo-left">
+	<div class="top-bar">
+		<div class="container">
+			<div class="row d-flex justify-content-between">
+				<div class="dlab-topbar-left">
+					<ul>
+						<li><i class="fa fa-phone m-r5"></i></li>
+						<li><i class="fa fa-instagram m-r5"></i></i>
+						<li><i class="fa fa-whatsapp m-r5"></i>
+					</ul>
+				</div>
+				<div class="dlab-topbar-right">
+					<ul>
+						<li><i class="fa fa-clock-o m-r5"></i> Opening Time : 9:30am-5:30pm</li>
+					</ul>
 				</div>
 			</div>
 		</div>
-        <div class="sticky-header main-bar-wraper navbar-expand-lg">
-            <div class="main-bar clearfix ">
-                <div class="container clearfix">
-                    <div class="logo-header mostion">
+	</div>
+	<div class="sticky-header main-bar-wraper navbar-expand-lg">
+		<div class="main-bar clearfix ">
+			<div class="container clearfix">
+				<div class="logo-header mostion">
+					<a href="{{ path('app_home') }}" class="dez-page"><img src="{{ asset('images/logo.png') }}" alt=""></a>
+				</div>
+				<button class="navbar-toggler collapsed navicon justify-content-end" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+
+				<div class="header-nav navbar-collapse collapse justify-content-end" id="navbarNavDropdown">
+					<div class="logo-header mostion">
 						<a href="{{ path('app_home') }}" class="dez-page"><img src="{{ asset('images/logo.png') }}" alt=""></a>
 					</div>
-                    <button class="navbar-toggler collapsed navicon justify-content-end" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-						<span></span>
-						<span></span>
-						<span></span>
-					</button>
-                 
-                    <div class="header-nav navbar-collapse collapse justify-content-end" id="navbarNavDropdown">
-						<div class="logo-header mostion">
-							<a href="{{ path('app_home') }}" class="dez-page"><img src="{{ asset('images/logo.png') }}" alt=""></a>
-						</div>
 
-                        <ul class="nav navbar-nav">	
-							<li class="active"><a href="#">Home</a>
-							<li><a href="{{ path('app_about') }}">О нас</a>
-                            {% for categorie in categories %}
-							<li><a href="#">{{ categorie.name }} <i class="fa fa-chevron-down"></i></a>
-                                {% if categorie.categories %}
-                                        <ul class="sub-menu">
-                                        {% for subcategorie in categorie.categories %}
-											{% if subcategorie.lessons|length > 0 %}
-												<li><a href="{{ path('app_lessons', {slug: (subcategorie.lessons|first).slug}) }}">{{ subcategorie.name }}</a></li>
-											{% endif %}                                        
-										{% endfor %}     
-                                        </ul>
-                                {% endif %}
-							</li>
-                            {% endfor %}
-							<li><a href="{{ path('app_contact') }}">Contact Us</a></li>
-							<li><a href="{{ path('app_calendar') }}">Reservations</a></li>
-
-							<li>
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a>
+						<li><a href="{{ path('app_about') }}">О нас</a>
+							{% for categorie in categories %}
+						<li><a href="#">{{ categorie.name }} <i class="fa fa-chevron-down"></i></a>
+							{% if categorie.categories %}
+								<ul class="sub-menu">
+									{% for subcategorie in categorie.categories %}
+										{% if subcategorie.lessons|length > 0 %}
+											<li><a href="{{ path('app_lessons', {slug: (subcategorie.lessons|first).slug}) }}">{{ subcategorie.name }}</a></li>
+										{% endif %}
+									{% endfor %}
+								</ul>
+							{% endif %}
+						</li>
+						{% endfor %}
+						{# only for russian shop #}
+						{% for shop in shops %}
+							<li><a href="#">{{ shop.name }} <i class="fa fa-chevron-down"></i></a>
+								<ul class="sub-menu">
+									{% for shop in shop.categoryshops %}
+										<li><a href="#">{{ shop.name }}</a></li>
+									{% endfor %}
+								</ul></li>
+						{% endfor %}
+						<li><a href="{{ path('app_contact') }}">Contact Us</a></li>
+						<li><a href="{{ path('app_calendar') }}">Reservations</a></li>
+						<li>
 							{% for locale in locales %}
 								{% if locale == app.request.locale %}
-								<a href="">
-									<img src="{{ asset('images/flag/' ~ locale ~ '.png') }}" alt="{{locale}}" height="15" style="height:15px;"/>
-								</a>
-								{% endif %}  
+									<a href="">
+										<img src="{{ asset('images/flag/' ~ locale ~ '.png') }}" alt="{{locale}}" height="15" style="height:15px;"/>
+									</a>
+								{% endif %}
 							{% endfor %}
-
 							<ul class="sub-menu" style="width: 80px;">
 								{% for locale in locales %}
-								{% if locale != app.request.locale %}
-									<li>
-										<a href="">
-											<img src="{{ asset('images/flag/' ~ locale ~ '.png') }}" alt="{{locale}}" height="15" style="height:15px;"/>
-										</a>
-									</li>
-								{% endif %}  
+									{% if locale != app.request.locale %}
+										<li>
+											<a href="">
+												<img src="{{ asset('images/flag/' ~ locale ~ '.png') }}" alt="{{locale}}" height="15" style="height:15px;"/>
+											</a>
+										</li>
+									{% endif %}
 								{% endfor %}
 							</ul>
-							</li>
-						</ul>		
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
