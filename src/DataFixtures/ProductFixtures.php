@@ -18,7 +18,7 @@ class ProductFixtures extends Fixture implements DependentFixtureInterface
             $product->setName('Produit ' . $i);
             $product->setSlug('produit-' . $i);
             $product->setLang('fr');
-            $product->setPicture('01.jpg');
+            $product->setImageName('01.jpg');
             $product->setIsOnline(true);
             $product->setPrice('100.00');
 

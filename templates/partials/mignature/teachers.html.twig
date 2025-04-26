@@ -4,7 +4,7 @@
 								<div class="dlab-box box-frame1 team-box">
 									<div class="dlab-thum"> 
 										<a href="teachers-details.html">
-											<img src="{{ asset('images/team/' ~ teachers.pictures) }}" alt="">
+											<img src="{{ vich_uploader_asset(teachers, 'imageFile') }}" alt="">
 										</a>
 										<div class="overlay-bx">
 											<h5 class="team-title"><a href="teachers-details.html">{{ teachers.name }}</a></h5>

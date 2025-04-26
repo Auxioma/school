@@ -17,7 +17,7 @@ class TestimonialFixtures extends Fixture implements DependentFixtureInterface
         for ($i = 0; $i < 5; $i++) {
             $testimonial = new Testimonial();
             $testimonial->setLang('ru');
-            $testimonial->setImage('pic2.jpg');
+            $testimonial->setImageName('pic2.jpg');
             $testimonial->setText($faker->paragraph(3));
             $testimonial->setRelation($this->getReference('user_1', User::class));
             $manager->persist($testimonial);

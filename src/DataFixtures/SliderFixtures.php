@@ -37,7 +37,7 @@ class SliderFixtures extends Fixture
 
         foreach ($sliders as $data) {
             $slider = new Slider();
-            $slider->setPicture($data['picture']);
+            $slider->setImageName($data['picture']);
             $slider->setLang($data['lang']);
             $slider->setTitre($data['titre']);
             $slider->setDescription($data['description']);

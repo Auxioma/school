@@ -7,8 +7,11 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LessonRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Lesson
 {
+    use Trait\DateTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -22,9 +25,6 @@ class Lesson
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $lang = null;
 
     #[ORM\ManyToOne(inversedBy: 'lessons')]
     private ?Category $Categories = null;
@@ -66,18 +66,6 @@ class Lesson
     public function setDescription(string $description): static
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getLang(): ?string
-    {
-        return $this->lang;
-    }
-
-    public function setLang(string $lang): static
-    {
-        $this->lang = $lang;
 
         return $this;
     }

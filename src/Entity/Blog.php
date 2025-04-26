@@ -7,8 +7,11 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BlogRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Blog
 {
+    use Trait\DateTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -25,9 +28,6 @@ class Blog
 
     #[ORM\ManyToOne(inversedBy: 'blogs')]
     private ?User $user = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $lang = null;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
@@ -81,18 +81,6 @@ class Blog
     public function setUser(?User $user): static
     {
         $this->user = $user;
-
-        return $this;
-    }
-
-    public function getLang(): ?string
-    {
-        return $this->lang;
-    }
-
-    public function setLang(string $lang): static
-    {
-        $this->lang = $lang;
 
         return $this;
     }

@@ -15,88 +15,53 @@ class CategoryFixtures extends Fixture
          * Create menu with submenu for school
          * russian, english, portuguese, german
          */
-        $category = [
-            1 => [
-                'name' => 'занятия',
-                'picture' => 'adult.jpg',
-                'slug' => 'занятия',
-                'isActive' => true,
+        $categories = [
+            [
+                'name' => 'Курсы французского языка',
+                'slug' => 'kursy-francuzskogo-yazyka',
                 'lang' => 'ru',
                 'parent' => [
-                    1 => [
-                        'name' => 'онлайн',
-                        'picture' => 'school.jpg',
-                        'slug' => 'онлайн',
-                        'isActive' => true,
+                    [
+                        'name' => 'Онлайн обучение',
+                        'slug' => 'onlayn-obuchenie',
                         'lang' => 'ru',
-                        'parent' => null
                     ],
-                    2 => [
-                        'name' => 'дети',
-                        'picture' => 'school.jpg',
-                        'slug' => 'дети',
-                        'isActive' => true,
+                    [
+                        'name' => 'Для начинающих',
+                        'slug' => 'dlya-nachinayushchikh',
                         'lang' => 'ru',
-                        'parent' => null
                     ],
-                    3 => [
-                        'name' => 'начинающие',
-                        'picture' => 'school.jpg',
-                        'slug' => 'начинающие',
-                        'isActive' => true,
+                    [
+                        'name' => 'Разговорный французский',
+                        'slug' => 'razgovornyy-francuzskiy',
                         'lang' => 'ru',
-                        'parent' => null
                     ],
-                    4 => [
-                        'name' => 'разговорный',
-                        'picture' => 'school.jpg',
-                        'slug' => 'разговорный',
-                        'isActive' => true,
+                    [
+                        'name' => 'Подготовка к экзаменам DELF',
+                        'slug' => 'podgotovka-k-ekzamenam-delf',
                         'lang' => 'ru',
-                        'parent' => null
                     ],
-                    5 => [
-                        'name' => 'экзамены',
-                        'picture' => 'school.jpg',
-                        'slug' => 'экзамены',
-                        'isActive' => true,
+                    [
+                        'name' => 'Французский для детей',
+                        'slug' => 'francuzskiy-dlya-detey',
                         'lang' => 'ru',
-                        'parent' => null
                     ],
-                    6 => [
-                        'name' => 'лето',
-                        'picture' => 'school.jpg',
-                        'slug' => 'лето',
-                        'isActive' => true,
+                    [
+                        'name' => 'Интенсивные курсы',
+                        'slug' => 'intensivnye-kursy',
                         'lang' => 'ru',
-                        'parent' => null
                     ],
-                    7 => [
-                        'name' => 'Нормандия',
-                        'picture' => 'school.jpg',
-                        'slug' => 'Нормандия',
-                        'isActive' => true,
-                        'lang' => 'ru',
-                        'parent' => null
-                    ],
-                    7 => [
-                        'name' => 'вопросы — ответы',
-                        'picture' => 'school.jpg',
-                        'slug' => 'вопросы — ответы',
-                        'isActive' => true,
-                        'lang' => 'ru',
-                        'parent' => null
-                    ],
-                ]
-            ]
+                ],
+            ],
         ];
 
-        foreach ( $category as $key => $value ) {
+
+        foreach ( $categories as $key => $value ) {
             $category = new Category();
             $category->setName($value['name']);
-            $category->setPicture($value['picture']);
+            $category->setImageName('1.jpg');
             $category->setSlug($value['slug']);
-            $category->setIsActive($value['isActive']);
+            $category->setIsOnline('1');
             $category->setLang($value['lang']);
             $category->setParent(null);
             $manager->persist($category);
@@ -104,9 +69,9 @@ class CategoryFixtures extends Fixture
             foreach ( $value['parent'] as $key => $value ) {
                 $categorys = new Category();
                 $categorys->setName($value['name']);
-                $categorys->setPicture($value['picture']);
+                $categorys->setImageName('1.jpg');
                 $categorys->setSlug($value['slug']);
-                $categorys->setIsActive($value['isActive']);
+                $categorys->setIsOnline('1');
                 $categorys->setLang($value['lang']);
                 $categorys->setParent($category);
                 $manager->persist($categorys);

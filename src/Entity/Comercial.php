@@ -4,10 +4,17 @@ namespace App\Entity;
 
 use App\Repository\ComercialRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 #[ORM\Entity(repositoryClass: ComercialRepository::class)]
+#[ORM\HasLifecycleCallbacks]
+#[Vich\Uploadable]
 class Comercial
 {
+    use Trait\DateTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -16,22 +23,15 @@ class Comercial
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column]
-    private ?bool $isOnline = null;
+    #[Vich\UploadableField(mapping: 'commercial', fileNameProperty: 'imageName', size: 'imageSize')]
+    private ?File $imageFile = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $lang = null;
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    #[ORM\Column(nullable: true)]
+    private ?int $imageSize = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $pictures = null;
-
-    public function __construct()
-    {
-        $this->createdAt = new \DateTimeImmutable();
-    }
 
     public function getId(): ?int
     {
@@ -50,51 +50,39 @@ class Comercial
         return $this;
     }
 
-    public function isOnline(): ?bool
+    public function setImageFile(?File $imageFile = null): void
     {
-        return $this->isOnline;
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
     }
 
-    public function setIsOnline(bool $isOnline): static
+    public function getImageFile(): ?File
     {
-        $this->isOnline = $isOnline;
-
-        return $this;
+        return $this->imageFile;
     }
 
-    public function getLang(): ?string
+    public function setImageName(?string $imageName): void
     {
-        return $this->lang;
+        $this->imageName = $imageName;
     }
 
-    public function setLang(string $lang): static
+    public function getImageName(): ?string
     {
-        $this->lang = $lang;
-
-        return $this;
+        return $this->imageName;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function setImageSize(?int $imageSize): void
     {
-        return $this->createdAt;
+        $this->imageSize = $imageSize;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    public function getImageSize(): ?int
     {
-        $this->createdAt = $createdAt;
-
-        return $this;
+        return $this->imageSize;
     }
 
-    public function getPictures(): ?string
-    {
-        return $this->pictures;
-    }
 
-    public function setPictures(string $pictures): static
-    {
-        $this->pictures = $pictures;
-
-        return $this;
-    }
 }

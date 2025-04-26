@@ -11,13 +11,13 @@ class TeachersFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $teacher = new Teachers();
-        $teacher->setLang('ru')
-                ->setPictures('pic300.jpg')
-                ->setName('john doe4')
-                ->setWhatsapp('010203040506')
-                ->setTelegram('010203040506')
-                ->setTeams('010203040506')
-                ->setViber('010203040506');
+        $teacher->setLang('ru');
+        $teacher->setImageName('pic300.jpg');
+        $teacher->setName('john doe4');
+        $teacher->setWhatsapp('010203040506');
+        $teacher->setTelegram('010203040506');
+        $teacher->setTeams('010203040506');
+        $teacher->setViber('010203040506');
 
         $manager->persist($teacher);
 

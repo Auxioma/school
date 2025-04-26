@@ -53,7 +53,6 @@ class NavshopFixtures extends Fixture
             $category->setSlug($this->slugger->slug($data['slug'])->toString());
             $category->setLang($data['lang']);
             $category->setIsOnline($data['isOnline']);
-            $category->setCreatedAt(new \DateTimeImmutable());
 
             $manager->persist($category);
 
@@ -65,7 +64,6 @@ class NavshopFixtures extends Fixture
                     $subcategory->setLang($subData['lang']);
                     $subcategory->setIsOnline($subData['isOnline']);
                     $subcategory->setParent($category);
-                    $subcategory->setCreatedAt(new \DateTimeImmutable());
 
                     // Ajouter une référence pour que ProductFixtures puisse y accéder
                     $this->addReference('category_' . $key . '_' . $subKey, $subcategory);

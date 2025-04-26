@@ -8,8 +8,11 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategoryshopRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Categoryshop
 {
+    use Trait\DateTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -18,17 +21,8 @@ class Categoryshop
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column]
-    private ?bool $isOnline = null;
-
-    #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
-
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
-
-    #[ORM\Column(length: 2)]
-    private ?string $lang = null;
 
     #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'categoryshops')]
     private ?self $parent = null;
@@ -68,30 +62,6 @@ class Categoryshop
         return $this;
     }
 
-    public function isOnline(): ?bool
-    {
-        return $this->isOnline;
-    }
-
-    public function setIsOnline(bool $isOnline): static
-    {
-        $this->isOnline = $isOnline;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTimeImmutable
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
     public function getSlug(): ?string
     {
         return $this->slug;
@@ -100,18 +70,6 @@ class Categoryshop
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
-
-        return $this;
-    }
-
-    public function getLang(): ?string
-    {
-        return $this->lang;
-    }
-
-    public function setLang(string $lang): static
-    {
-        $this->lang = $lang;
 
         return $this;
     }
