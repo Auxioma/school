@@ -59,8 +59,8 @@
 									{% endfor %}
 								</ul></li>
 						{% endfor %}
-						<li><a href="{{ path('app_contact') }}">Contact Us</a></li>
-						<li><a href="{{ path('app_calendar') }}">Reservations</a></li>
+						<li><a href="{{ path('app_contact') }}">{{ 'contactus'|trans }}</a></li>
+						<li><a href="{{ path('app_calendar') }}">{{ 'reservation'|trans }}</a></li>
 						<li>
 							{% for locale in locales %}
 								{% if locale == app.request.locale %}

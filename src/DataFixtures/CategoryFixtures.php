@@ -17,7 +17,7 @@ class CategoryFixtures extends Fixture
          */
         $categories = [
             [
-                'name' => 'Курсы французского языка',
+                'name' => '',
                 'slug' => 'kursy-francuzskogo-yazyka',
                 'lang' => 'ru',
                 'parent' => [
