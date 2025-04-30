@@ -24,10 +24,16 @@ trait DateTrait
     }
 
     public function setCreatedAt(\DateTimeImmutable $createdAt): self
-{
-    $this->createdAt = $createdAt;
-    return $this;
-}
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }    
+    
+    public function setUpdatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->updatedAt = $updatedAt;
+        return $this;
+    }
 
     #[ORM\PrePersist]
     public function onPrePersist(): void
