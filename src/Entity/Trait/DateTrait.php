@@ -29,7 +29,7 @@ trait DateTrait
         return $this;
     }    
     
-    public function setUpdatedAt(\DateTimeImmutable $createdAt): self
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
         return $this;
