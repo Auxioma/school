@@ -33,8 +33,8 @@ class CategoryCrudController extends AbstractCrudController
                     'bulgare' => 'bg',
                     'allemand' => 'de',
                     'portugais' => 'pt',
-                ])
-               
+                ]
+            )   
         ];
     }
 }
