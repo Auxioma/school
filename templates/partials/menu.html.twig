@@ -59,7 +59,11 @@
 									{% endfor %}
 								</ul></li>
 						{% endfor %}
-						<li><a href="{{ path('app_contact') }}">{{ 'contactus'|trans }}</a></li>
+						<li>
+							<a href="{{ path('app_contact') }}">
+								{{ 'navcontactus'|trans }}
+							</a>
+						</li>
 						<li><a href="{{ path('app_calendar') }}">{{ 'reservation'|trans }}</a></li>
 						<li>
 							{% for locale in locales %}
