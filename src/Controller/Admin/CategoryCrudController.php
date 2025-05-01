@@ -28,8 +28,11 @@ class CategoryCrudController extends AbstractCrudController
             AssociationField::new('parent'),
             ChoiceField::new('lang')
                 ->setChoices([
-                    'Français' => 'fr',
-                    'Anglais' => 'en'
+                    'Anglais' => 'en',
+                    'russe' => 'ru',
+                    'bulgare' => 'bg',
+                    'allemand' => 'de',
+                    'portugais' => 'pt',
                 ])
                
         ];
