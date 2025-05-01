@@ -3,12 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Lesson;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class LessonCrudController extends AbstractCrudController
 {
@@ -43,6 +44,15 @@ class LessonCrudController extends AbstractCrudController
             ]),
 
             AssociationField::new('Categories'),
+            ChoiceField::new('lang')
+                ->setChoices([
+                    'Anglais' => 'en',
+                    'russe' => 'ru',
+                    'bulgare' => 'bg',
+                    'allemand' => 'de',
+                    'portugais' => 'pt',
+                ]
+            )
 
         ];
     }
