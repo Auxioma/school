@@ -5,6 +5,10 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     app.languages: ['ru', 'en', 'bg', 'de', 'pt']
+    google_api.client_id:     '%env(GOOGLE_CLIENT_ID)%'
+    google_api.client_secret: '%env(GOOGLE_CLIENT_SECRET)%'
+    google_api.redirect_uri:  '%env(resolve:GOOGLE_REDIRECT_URI)%'
+    google_api.auth_config:   '%kernel.project_dir%/google/cal.json'
 
 services:
     # default configuration for services in *this* file
@@ -31,3 +35,17 @@ services:
     App\EventSubscriber\TranslationSubscriber:
         tags:
             - { name: kernel.event_subscriber }
+
+    App\Service\GoogleClientFactory:
+        arguments:
+            $clientId:     '%google_api.client_id%'
+            $clientSecret: '%google_api.client_secret%'
+            $redirectUri:  '%google_api.redirect_uri%'
+            $authConfig:   '%google_api.auth_config%'
+
+    Google\Service\Calendar:
+        factory: ['@App\Service\GoogleClientFactory', 'createClient']
+        # la fabrique retourne un Google\Client, on doit donc indiquer
+        # l'argument pour construire Calendar
+        arguments:
+            - '@=service("App\\Service\\GoogleClientFactory").createClient()'
